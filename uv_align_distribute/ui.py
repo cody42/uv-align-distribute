@@ -75,6 +75,9 @@ class IMAGE_PT_align_distribute(bpy.types.Panel):
         row.operator("uv.align_rotation", text="Rotation",
                      icon_value=pcoll["align_rotation"].icon_id)
         row.operator("uv.equalize_scale", text="Eq. Scale")
+        
+        row = layout.row()
+        row.operator("uv.fill_xy", text="Fill")
 
         layout.separator()
         # Another Panel??
