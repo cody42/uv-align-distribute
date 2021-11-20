@@ -26,6 +26,22 @@ from . import make_islands, operator_manager, templates, utils
 # ALIGN
 #####################
 
+class FillXY(templates.UvOperatorTemplate):
+    """Fill whole UV Space"""
+    bl_idname = "uv.fill_xy"
+    bl_label = "Fill UV space"
+    bl_options = {"REGISTER", "UNDO"}
+    
+    def execute(self, context):
+        gsettings = context.scene.uv_align_distribute
+        makeIslands = make_islands.MakeIslands()
+        
+        selectedIslands = makeIslands.selectedIslands()
+        for island in selectedIslands:
+            island.scale(1.0/island.size().width, 1.0/island.size().height)
+        
+        utils.update()
+        return {"FINISHED"}
 
 class AlignSXMargin(templates.UvOperatorTemplate):
     """Align left margin."""
