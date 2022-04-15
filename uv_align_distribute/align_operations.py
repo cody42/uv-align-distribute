@@ -378,6 +378,7 @@ class AlignRotation(templates.UvOperatorTemplate):
 # REGISTRATION
 #################################
 _om = operator_manager.om
+_om.addClass(FillXY)
 _om.addClass(AlignHAxis)
 _om.addClass(AlignVAxis)
 _om.addClass(AlignRotation)
