@@ -30,7 +30,7 @@ class IMAGE_PT_align_distribute(bpy.types.Panel):
     bl_label = "Align\\Distribute"
     bl_space_type = 'IMAGE_EDITOR'
     bl_region_type = 'UI'
-    bl_category = "Tools"
+    bl_category = "A/D Tools"
 
     @classmethod
     def poll(cls, context):
@@ -78,6 +78,8 @@ class IMAGE_PT_align_distribute(bpy.types.Panel):
         
         row = layout.row()
         row.operator("uv.fill_xy", text="Fill")
+        row.operator("uv.fill_y", text="HFill")
+        row.operator("uv.fill_x", text="VFill")
 
         layout.separator()
         # Another Panel??
