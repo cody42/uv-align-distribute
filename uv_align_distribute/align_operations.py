@@ -46,41 +46,41 @@ class FillXY(templates.UvOperatorTemplate):
 class FillY(templates.UvOperatorTemplate):
     """Fill whole UV Vertical Space"""
     bl_idname = "uv.fill_y"
-    bl_label = "Fill UV Vertical space"
+    bl_label = "Fill UV Horizontal space"
     bl_options = {"REGISTER", "UNDO"}
-    
+
     def execute(self, context):
         gsettings = context.scene.uv_align_distribute
         makeIslands = make_islands.MakeIslands()
-        
+
         selectedIslands = makeIslands.selectedIslands()
         for island in selectedIslands:
-            print(island.size().width)            
-            h = 1.0/island.size().height
-            w = h
+            w =1.0/island.size().width
+            h = w
             island.scale(w, h)
-        
+
         utils.update()
         return {"FINISHED"}
 
 class FillX(templates.UvOperatorTemplate):
     """Fill whole UV Horizontal Space"""
     bl_idname = "uv.fill_x"
-    bl_label = "Fill UV Horizontal space"
+    bl_label = "Fill UV Vertical space"
     bl_options = {"REGISTER", "UNDO"}
     
     def execute(self, context):
         gsettings = context.scene.uv_align_distribute
         makeIslands = make_islands.MakeIslands()
-        
+
         selectedIslands = makeIslands.selectedIslands()
         for island in selectedIslands:
-            w =1.0/island.size().width            
-            h = w
-            island.scale(w, h)           
-        
+            #print(island.size().width)
+            h = 1.0/island.size().height
+            w = h
+            island.scale(w, h)
+
         utils.update()
-        return {"FINISHED"}                
+        return {"FINISHED"}
 
 class AlignSXMargin(templates.UvOperatorTemplate):
     """Align left margin."""
