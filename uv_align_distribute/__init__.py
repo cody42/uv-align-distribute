@@ -94,7 +94,7 @@ def register():
     pcoll.load("align_center_ver", os.path.join(my_icons_dir, "al_center_ver.png"), "IMAGE")
 
     pcoll.load(
-        "align_rotation", os.path.join(my_icons_dir, "ink_transform_rotate.png"), "IMAGE",
+        "uad_align_rotation", os.path.join(my_icons_dir, "ink_transform_rotate.png"), "IMAGE",
     )
 
     pcoll.load(
@@ -119,7 +119,6 @@ def register():
         bpy.utils.register_class(c)
 
     bpy.types.Scene.uv_align_distribute = bpy.props.PointerProperty(type=global_def.GlobalSettings)
-
 
 def unregister():
 

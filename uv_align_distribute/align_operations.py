@@ -82,7 +82,7 @@ class FillX(templates.UvOperatorTemplate):
         utils.update()
         return {"FINISHED"}
 
-class AlignSXMargin(templates.UvOperatorTemplate):
+class AlignLeftMargin(templates.UvOperatorTemplate):
     """Align left margin."""
 
     bl_idname = "uv.align_left_margin"
@@ -127,7 +127,7 @@ class AlignSXMargin(templates.UvOperatorTemplate):
         return {"FINISHED"}
 
 
-class AlignRxMargin(templates.UvOperatorTemplate):
+class AlignRightMargin(templates.UvOperatorTemplate):
     """Align right margin."""
 
     bl_idname = "uv.align_right_margin"
@@ -353,10 +353,10 @@ class AlignVAxis(templates.UvOperatorTemplate):
 
 
 #########################################
-class AlignRotation(templates.UvOperatorTemplate):
+class UAD_AlignRotation(templates.UvOperatorTemplate):
     """Align island rotation."""
 
-    bl_idname = "uv.align_rotation"
+    bl_idname = "uv.uad_align_rotation"
     bl_label = "Align island rotation"
     bl_options = {"REGISTER", "UNDO"}
 
@@ -422,8 +422,8 @@ _om.addClass(FillX)
 _om.addClass(FillY)
 _om.addClass(AlignHAxis)
 _om.addClass(AlignVAxis)
-_om.addClass(AlignRotation)
-_om.addClass(AlignRxMargin)
-_om.addClass(AlignSXMargin)
+_om.addClass(UAD_AlignRotation)
+_om.addClass(AlignRightMargin)
+_om.addClass(AlignLeftMargin)
 _om.addClass(AlignLowMargin)
 _om.addClass(AlignTopMargin)
