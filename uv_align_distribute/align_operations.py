@@ -43,7 +43,46 @@ class FillXY(templates.UvOperatorTemplate):
         utils.update()
         return {"FINISHED"}
 
-class AlignSXMargin(templates.UvOperatorTemplate):
+class FillY(templates.UvOperatorTemplate):
+    """Fill whole UV Vertical Space"""
+    bl_idname = "uv.fill_y"
+    bl_label = "Fill UV Horizontal space"
+    bl_options = {"REGISTER", "UNDO"}
+
+    def execute(self, context):
+        gsettings = context.scene.uv_align_distribute
+        makeIslands = make_islands.MakeIslands()
+
+        selectedIslands = makeIslands.selectedIslands()
+        for island in selectedIslands:
+            w =1.0/island.size().width
+            h = w
+            island.scale(w, h)
+
+        utils.update()
+        return {"FINISHED"}
+
+class FillX(templates.UvOperatorTemplate):
+    """Fill whole UV Horizontal Space"""
+    bl_idname = "uv.fill_x"
+    bl_label = "Fill UV Vertical space"
+    bl_options = {"REGISTER", "UNDO"}
+    
+    def execute(self, context):
+        gsettings = context.scene.uv_align_distribute
+        makeIslands = make_islands.MakeIslands()
+
+        selectedIslands = makeIslands.selectedIslands()
+        for island in selectedIslands:
+            #print(island.size().width)
+            h = 1.0/island.size().height
+            w = h
+            island.scale(w, h)
+
+        utils.update()
+        return {"FINISHED"}
+
+class AlignLeftMargin(templates.UvOperatorTemplate):
     """Align left margin."""
 
     bl_idname = "uv.align_left_margin"
@@ -88,7 +127,7 @@ class AlignSXMargin(templates.UvOperatorTemplate):
         return {"FINISHED"}
 
 
-class AlignRxMargin(templates.UvOperatorTemplate):
+class AlignRightMargin(templates.UvOperatorTemplate):
     """Align right margin."""
 
     bl_idname = "uv.align_right_margin"
@@ -314,10 +353,10 @@ class AlignVAxis(templates.UvOperatorTemplate):
 
 
 #########################################
-class AlignRotation(templates.UvOperatorTemplate):
+class UAD_AlignRotation(templates.UvOperatorTemplate):
     """Align island rotation."""
 
-    bl_idname = "uv.align_rotation"
+    bl_idname = "uv.uad_align_rotation"
     bl_label = "Align island rotation"
     bl_options = {"REGISTER", "UNDO"}
 
@@ -379,10 +418,12 @@ class AlignRotation(templates.UvOperatorTemplate):
 #################################
 _om = operator_manager.om
 _om.addClass(FillXY)
+_om.addClass(FillX)
+_om.addClass(FillY)
 _om.addClass(AlignHAxis)
 _om.addClass(AlignVAxis)
-_om.addClass(AlignRotation)
-_om.addClass(AlignRxMargin)
-_om.addClass(AlignSXMargin)
+_om.addClass(UAD_AlignRotation)
+_om.addClass(AlignRightMargin)
+_om.addClass(AlignLeftMargin)
 _om.addClass(AlignLowMargin)
 _om.addClass(AlignTopMargin)

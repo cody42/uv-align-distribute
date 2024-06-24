@@ -16,7 +16,7 @@ try:
                 for area in screen.areas:
                     if area.type == "IMAGE_EDITOR":
                         self.override = {'window': window, 'screen': screen,
-                                         'area': area}
+                                        'area': area}
                         break
             self.make_island = make_islands.MakeIslands()
             self.selectedIslands = self.make_island.selectedIslands()
@@ -167,7 +167,7 @@ try:
 
         def test_align_operations_AlignRotation_active_island(self):
             bpy.context.scene.uv_align_distribute.relativeItems = "ACTIVE"
-            bpy.ops.uv.align_rotation(self.override)
+            bpy.ops.uv.uad_align_rotation(self.override)
             # activeIsland_angle = self.activeIsland.angle()
             for i in self.selectedIslands:
                 # the rotation happen but island maybe flipped,

@@ -30,7 +30,7 @@ class IMAGE_PT_align_distribute(bpy.types.Panel):
     bl_label = "Align\\Distribute"
     bl_space_type = 'IMAGE_EDITOR'
     bl_region_type = 'UI'
-    bl_category = "Tools"
+    bl_category = "A/D Tools"
 
     @classmethod
     def poll(cls, context):
@@ -57,27 +57,29 @@ class IMAGE_PT_align_distribute(bpy.types.Panel):
         box = layout.box()
         row = box.row(align=True)
         row.operator("uv.align_left_margin", text="Left",
-                     icon_value=pcoll["align_left"].icon_id)
+                    icon_value=pcoll["align_left"].icon_id)
         row.operator("uv.align_vertical_axis", text="VCenter",
-                     icon_value=pcoll["align_center_hor"].icon_id)
+                    icon_value=pcoll["align_center_hor"].icon_id)
         row.operator("uv.align_right_margin", text="Right",
-                     icon_value=pcoll["align_right"].icon_id)
+                    icon_value=pcoll["align_right"].icon_id)
 
         row = box.row(align=True)
         row.operator("uv.align_top_margin", text="Top",
-                     icon_value=pcoll["align_top"].icon_id)
+                    icon_value=pcoll["align_top"].icon_id)
         row.operator("uv.align_horizontal_axis", text="HCenter",
-                     icon_value=pcoll["align_center_ver"].icon_id)
+                    icon_value=pcoll["align_center_ver"].icon_id)
         row.operator("uv.align_low_margin", text="Bottom",
-                     icon_value=pcoll["align_bottom"].icon_id)
+                    icon_value=pcoll["align_bottom"].icon_id)
 
         row = layout.row()
-        row.operator("uv.align_rotation", text="Rotation",
-                     icon_value=pcoll["align_rotation"].icon_id)
+        row.operator("uv.uad_align_rotation", text="Rotation",
+                    icon_value=pcoll["uad_align_rotation"].icon_id)
         row.operator("uv.equalize_scale", text="Eq. Scale")
         
         row = layout.row()
         row.operator("uv.fill_xy", text="Fill")
+        row.operator("uv.fill_y", text="HFill")
+        row.operator("uv.fill_x", text="VFill")
 
         layout.separator()
         # Another Panel??
@@ -87,27 +89,27 @@ class IMAGE_PT_align_distribute(bpy.types.Panel):
 
         row = box.row(align=True)
         row.operator("uv.distribute_ledges_horizontally", text="Left",
-                     icon_value=pcoll["distribute_left"].icon_id)
+                    icon_value=pcoll["distribute_left"].icon_id)
 
         row.operator("uv.distribute_center_horizontally", text="Center",
-                     icon_value=pcoll["distribute_hcentre"].icon_id)
+                    icon_value=pcoll["distribute_hcentre"].icon_id)
 
         row.operator("uv.distribute_redges_horizontally", text="Right",
-                     icon_value=pcoll["distribute_right"].icon_id)
+                    icon_value=pcoll["distribute_right"].icon_id)
 
         row = box.row(align=True)
         row.operator("uv.distribute_tedges_vertically", text="TEdges",
-                     icon_value=pcoll["distribute_top"].icon_id)
+                    icon_value=pcoll["distribute_top"].icon_id)
         row.operator("uv.distribute_center_vertically", text="VCenters",
-                     icon_value=pcoll["distribute_vcentre"].icon_id)
+                    icon_value=pcoll["distribute_vcentre"].icon_id)
         row.operator("uv.distribute_bedges_vertically", text="BEdges",
-                     icon_value=pcoll["distribute_bottom"].icon_id)
+                    icon_value=pcoll["distribute_bottom"].icon_id)
 
         row = layout.row(align=True)
         row.operator("uv.equalize_horizontal_gap", text="Eq. HGap",
-                     icon_value=pcoll["distribute_hdist"].icon_id)
+                    icon_value=pcoll["distribute_hdist"].icon_id)
         row.operator("uv.equalize_vertical_gap", text="Eq. VGap",
-                     icon_value=pcoll["distribute_vdist"].icon_id)
+                    icon_value=pcoll["distribute_vdist"].icon_id)
         #
         # # wip
         # # row = layout.row(True)
